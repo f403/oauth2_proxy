@@ -2,7 +2,6 @@ package providers
 
 import (
 	"bytes"
-	"encoding/base64"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -10,7 +9,6 @@ import (
 	"log"
 	"net/http"
 	"net/url"
-	"strings"
 	"time"
 )
 
