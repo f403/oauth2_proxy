@@ -6,17 +6,12 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
-
-	"golang.org/x/oauth2"
-	"golang.org/x/oauth2/google"
-	"google.golang.org/api/admin/directory/v1"
 )
 
 type DjangoOauthProvider struct {
@@ -51,15 +46,6 @@ func NewDjangoOauthProvider(p *ProviderData) *DjangoOauthProvider {
 	return &DjangoOauthProvider{
 		ProviderData: p,
 	}
-}
-
-
-func jwtDecodeSegment(seg string) ([]byte, error) {
-	if l := len(seg) % 4; l > 0 {
-		seg += strings.Repeat("=", 4-l)
-	}
-
-	return base64.URLEncoding.DecodeString(seg)
 }
 
 func (p *DjangoOauthProvider) Redeem(redirectURL, code string) (s *SessionState, err error) {

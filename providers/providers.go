@@ -31,7 +31,7 @@ func New(provider string, p *ProviderData) Provider {
 	case "gitlab":
 		return NewGitLabProvider(p)
 	case "django":
-		return NewDjangoOauth(p)
+		return NewDjangoOauthProvider(p)
 	default:
 		return NewGoogleProvider(p)
 	}
