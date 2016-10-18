@@ -164,7 +164,7 @@ func NewOAuthProxy(opts *Options, validator func(string) bool) *OAuthProxy {
 	var cipher *cookie.Cipher
 	if opts.PassAccessToken || (opts.CookieRefresh != time.Duration(0)) {
 		var err error
-		cipher, err = cookie.NewCipher(secretBytes(opts.CookieSecret))
+		cipher, err = cookie.NewCipher(string(secretBytes(opts.CookieSecret)))
 		if err != nil {
 			log.Fatal("cookie-secret error: ", err)
 		}
